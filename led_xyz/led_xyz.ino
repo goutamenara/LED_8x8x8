@@ -3,8 +3,8 @@
  *  By: Ashlin Jose, Goutam S
  */
 
-#define C0 0
-#define C1 1
+#define C0 12
+#define C1 13
 #define C2 2
 #define C3 3
 #define CE0 4
@@ -16,14 +16,43 @@
 #define R1 10
 #define R2 11
 
-//int ARRAY[8][3]={{0,0,0},{1,1,0},{2,2,0},{3,3,0},{4,4,0},{5,5,0},{6,6,0},{7,7,0}};
-int X[16] ={224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239};
+boolean ce3=0,ce2=0,ce1=0,ce0=0,c3=0,c2=0,c1=0,c0=0;
+boolean re=0,r2=0,r1=0,r0=0;
+int x=1,y=0,z=0,Cen=0;
+void glow_led(int x, int y, int z)
+{
+  c0=(x & 0b001);
+ c1=(x & 0b010)>>1;
+ c2=(x & 0b100)>>2;
+ c3=(y%2);
+ 
+ r0=(z & 0b001);
+ r1=(z & 0b010)>>1;
+ r2=(z & 0b100)>>2;
 
-byte ce3,ce2,ce1,ce0,c3,c2,c1,c0;
-byte re,r2,r1,r0;
-int XY_POS,Z_POS;
+ Cen=(15-(pow(2,(y/2))));
+
+ ce0=(Cen & 0b0001);
+ ce1=(Cen & 0b0010)>>1;
+ ce2=(Cen & 0b0100)>>2;
+ ce3=(Cen & 0b1000)>>3;
+
+  digitalWrite(CE3,ce3);
+  digitalWrite(CE2,ce2);
+  digitalWrite(CE1,ce1);
+  digitalWrite(CE0,ce0);
+  digitalWrite(C3, c3);
+  digitalWrite(C2, c2);
+  digitalWrite(C1, c1);
+  digitalWrite(C0, c0);
+  digitalWrite(R2, r2);
+  digitalWrite(R1, r1);
+  digitalWrite(R0, r0);
+}
 void setup() 
 {                                   /*Setup Starts*/
+
+Serial.begin(115200);
 pinMode(C0,OUTPUT); 
 pinMode(C1,OUTPUT); 
 pinMode(C2,OUTPUT); 
@@ -37,7 +66,7 @@ pinMode(R0,OUTPUT);
 pinMode(R1,OUTPUT); 
 pinMode(R2,OUTPUT); 
 
-digitalWrite(RE, LOW);
+digitalWrite(RE, HIGH);
 digitalWrite(CE0, HIGH);
 digitalWrite(CE1, HIGH);
 digitalWrite(CE2, HIGH);
@@ -52,43 +81,60 @@ digitalWrite(R2, HIGH);
 
 void loop() 
 {                            /*loop Starts*/
-
-
-
-for(int i=0;i<8;i++)
-{
-  //XY_POS=224+ARRAY[i][0] + 8*ARRAY[i][1] ;
-  //Z_POS =8+ARRAY[i][2]; 
-  //XY_POS=X[i]-48;
-  //Z_POS=8;
-  ce3=(XY_POS & 0b10000000)>>7;
-  ce2=(XY_POS & 0b01000000)>>6;
-  ce1=(XY_POS & 0b00100000)>>5;
-  ce0=(XY_POS & 0b00010000)>>4;
-  c3 =(XY_POS & 0b00001000)>>3;
-  c2 =(XY_POS & 0b00000100)>>2;
-  c1 =(XY_POS & 0b00000010)>>1;
-  c0 =(XY_POS & 0b00000001);
-
-  re =(Z_POS  & 0b1000)>>3;
-  r2 =(Z_POS  & 0b0100)>>2;
-  r1 =(Z_POS  & 0b0010)>>1;
-  r0 =(Z_POS  & 0b0001);
-
-  digitalWrite(CE3,ce3);
-  digitalWrite(CE2,ce2);
-  digitalWrite(CE1,ce1);
-  digitalWrite(CE0,ce0);
-  digitalWrite(C3 ,c3);
-  digitalWrite(C2, c2);
-  digitalWrite(C1, c1);
-  digitalWrite(C0, c0);
-  digitalWrite(RE, re);
-  digitalWrite(R2, r2);
-  digitalWrite(R1, r1);
-  digitalWrite(R0, r0);
+ /*while (!Serial.available()){;}
+ x=Serial.parseInt();
+ y=Serial.parseInt();
+ z=Serial.parseInt();*/
+ for(x=2,y=2,z=2;x<8;x++)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+   for(x=4,y=4,z=4;x<8;x++)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+   delay(100);
+   
+   for(x=4,y=2,z=2;y<8;y++)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+   for(x=4,y=2,z=2;y<8;y++)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+   delay(100);
+   
+   for(x=4,y=4,z=2;x>=0;x--)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+   for(x=4,y=4,z=4;x>=0;x--)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+  delay(100);
   
- delay(200);
- }
-
+   for(x=2,y=4,z=2;y>=0;y--)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+   for(x=2,y=4,z=4;y>=0;y--)
+  {
+   glow_led(x,y,z);
+  delay(15);
+  }
+delay(100);
+  
+   
+   
+  
+   
 }                             /* Loop Ends */
