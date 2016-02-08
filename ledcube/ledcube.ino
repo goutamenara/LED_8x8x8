@@ -97,7 +97,7 @@ for(byte d=0;d<=3;d++)
     digitalWrite(C1,c1);
     digitalWrite(C2,c2);
     digitalWrite(C3,c3);
-    delay(100);
+    delay(500);
    }                            /*for CE  ENDS*/          
    
    }                            /* for DE Ends*/
