@@ -3,8 +3,8 @@
  *  By: Ashlin Jose, Goutam S
  */
 
-#define C0 0
-#define C1 1
+#define C0 12
+#define C1 13
 #define C2 2
 #define C3 3
 #define CE0 4
@@ -97,7 +97,7 @@ for(byte d=0;d<=3;d++)
     digitalWrite(C1,c1);
     digitalWrite(C2,c2);
     digitalWrite(C3,c3);
-    delay(500);
+    delay(100);
    }                            /*for CE  ENDS*/          
    
    }                            /* for DE Ends*/

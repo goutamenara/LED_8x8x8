@@ -85,56 +85,53 @@ void loop()
  x=Serial.parseInt();
  y=Serial.parseInt();
  z=Serial.parseInt();*/
- for(x=2,y=2,z=2;x<8;x++)
+ for(x=0,y=0,z=0;x<8;x++)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-   for(x=4,y=4,z=4;x<8;x++)
+   for(x=0,y=0,z=7;x<8;x++)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-   delay(100);
+   //delay(100);
    
-   for(x=4,y=2,z=2;y<8;y++)
+   for(x=7,y=0,z=0;y<8;y++)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-   for(x=4,y=2,z=2;y<8;y++)
+   for(x=7,y=0,z=7;y<8;y++)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-   delay(100);
+   //delay(100);
    
-   for(x=4,y=4,z=2;x>=0;x--)
+   for(x=7,y=7,z=0;x>=0;x--)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-   for(x=4,y=4,z=4;x>=0;x--)
+   for(x=7,y=7,z=7;x>=0;x--)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-  delay(100);
+  //delay(100);
   
-   for(x=2,y=4,z=2;y>=0;y--)
+   for(x=0,y=7,z=0;y>=0;y--)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-   for(x=2,y=4,z=4;y>=0;y--)
+   for(x=0,y=7,z=7;y>=0;y--)
   {
    glow_led(x,y,z);
-  delay(15);
+  delay(1);
   }
-delay(100);
-  
-   
-   
+//delay(100);
   
    
 }                             /* Loop Ends */
