@@ -3,8 +3,8 @@
  *  By: Ashlin Jose, Goutam S
  */
 
-#define C0 0
-#define C1 1
+#define C0 12
+#define C1 13
 #define C2 2
 #define C3 3
 #define CE0 4

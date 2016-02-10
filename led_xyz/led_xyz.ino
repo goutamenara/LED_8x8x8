@@ -21,7 +21,7 @@ boolean re=0,r2=0,r1=0,r0=0;
 int x=1,y=0,z=0,Cen=0;
 void glow_led(int x, int y, int z)
 {
-  c0=(x & 0b001);
+ c0=(x & 0b001);
  c1=(x & 0b010)>>1;
  c2=(x & 0b100)>>2;
  c3=(y%2);
